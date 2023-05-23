@@ -1,11 +1,19 @@
-import React from 'react'
-import Home from './components/Home';
-import "./components/Home.css";
+import React, { createContext, useState } from "react";
+import Home from "./components/Home";
+import "./components/styles.css";
+const SearchContext = createContext();
 
 const App = () => {
-  return (
-    <Home/>
-  )
-}
+  const [sData, setSData] = useState([]);
+  const [search, setSearch] = useState("");
+  const [fData, setFdata] = useState([]);
 
-export default App
+  return (
+    <SearchContext.Provider value={{ sData, setSData,search, setSearch,fData, setFdata }}>
+      <Home />
+    </SearchContext.Provider>
+  );
+};
+
+export default App;
+export {SearchContext}

@@ -2,32 +2,20 @@ import React, { useState } from "react";
 import { ReactComponent as Mlogo } from "../assests/logo.svg";
 import SearchBar from "./SearchBar";
 import Lrockets from "./Lrockets";
-import Footer from "./Footer";
 import { ReactComponent as Menubar } from "../assests/menu.svg";
+import { ReactComponent as XIcon } from "../assests/xicon.svg";
 
 const Home = () => {
-  const [open, setOpen] = useState(true);
-  const [btnName, setBtnName] = useState("Open");
 
-  const handleOpen = () => {
-    if (open) {
-      setBtnName("Close");
-      setOpen(false);
-    } else {
-      setBtnName("Open");
-      setOpen(true);
-    }
-  };
+  const [isMobile, setIsMobile] = useState(false);
 
   return (
     <div className="main-container">
       
-      {/* <button onClick={handleOpen}>{btnName}</button> */}
-      <Menubar onClick={handleOpen} className="menu-img mb-nav"/>
       <Mlogo className="logo" />
       <div
-        className="navSection"
-        
+        className={isMobile ? "nav-links-mobile":"navSection"}
+        onClick={() => setIsMobile(false)}
       >
         <div className="nav-items ">FALCON 9</div>
         <div className="nav-items ">FALCON HEAVY</div>
@@ -39,11 +27,16 @@ const Home = () => {
         <div className="nav-items ">STARLINK</div>
       </div>
 
+      <button  className="mobile-menu-icon" onClick={() => setIsMobile(!isMobile)} > 
+        {
+          isMobile ? <XIcon className="xicon"/> : <Menubar/> 
+        }
+      </button>
+
       <div className="sl">
         <SearchBar />
         <Lrockets />
       </div>
-      {/* <Footer/> */}
     </div>
   );
 };
