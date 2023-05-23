@@ -3,7 +3,7 @@ import axios from "axios";
 import { SearchContext } from ".././App.js";
 
 const Lrockets = () => {
-  const { sData, setSData, search, setSearch, fData, setFdata } =
+  const { sData, setSData, search, fData } =
     useContext(SearchContext);
 
   let url = `https://api.spacexdata.com/v3/rockets`;

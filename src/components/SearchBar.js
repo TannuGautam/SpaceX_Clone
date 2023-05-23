@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { ReactComponent as Searchicon } from "../assests/searchicon.svg";
 import { SearchContext } from ".././App.js";
 
 const SearchBar = () => {
-  const { sData, setSData,search, setSearch,fData, setFdata } = useContext(SearchContext);
+  const { sData, setSData,search, setSearch, setFdata } = useContext(SearchContext);
 
   const handleChange = (e) => {
     const searchk = e.target.value;
